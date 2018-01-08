@@ -9,6 +9,7 @@ var connection = mysql.createConnection({
     charset: "utf8mb4"
 });
 
+console.log(connection);
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
