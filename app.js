@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
+var moment = require("moment");
+
 var connection = mysql.createConnection({
     host: process.env.MYSQL_HOST || "localhost",
     user: process.env.MYSQL_USER || "root",
@@ -9,7 +11,6 @@ var connection = mysql.createConnection({
     charset: "utf8mb4"
 });
 
-console.log(connection);
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -63,7 +64,8 @@ mainRouter.get("/numberOfTaxis", function(req, res){
             data.err = 0;
             data.number_of_taxis = res1[0].number_of_taxis;
             data.res = "Successful";
-            data.date = res1[0].timestamp;
+            
+            data.date = moment().utc(res1[0].timestamp).toDate();
             res.json(data);
 
         }
@@ -73,4 +75,4 @@ mainRouter.get("/numberOfTaxis", function(req, res){
 
 
 
-app.listen( process.env.PORT|| 3000);
+app.listen( process.env.PORT|| 3001);
