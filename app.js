@@ -65,7 +65,7 @@ mainRouter.get("/numberOfTaxis", function(req, res){
             data.number_of_taxis = res1[0].number_of_taxis;
             data.res = "Successful";
             
-            data.date = moment().utc(res1[0].timestamp).toDate();
+            data.date = Date(res1[0].timestamp);
             res.json(data);
 
         }
