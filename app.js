@@ -13,10 +13,7 @@ var connection = mysql.createConnection({
 
 // ADDING ADD HOURS TO DATE OBJECT
 
-Date.prototype.addHours = function(h) {    
-    this.setTime(this.getTime() + (h*60*60*1000)); 
-    return this;   
- }
+
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -72,7 +69,8 @@ mainRouter.get("/numberOfTaxis", function(req, res){
             data.number_of_taxis = res1[0].number_of_taxis;
             data.res = "Successful";
             
-            data.date = (process.env.PORT)? new Date(res1[0].timestamp) : new Date(res1[0].timestamp).addHours(4);
+            data.date = new Date(res1[0].timestamp);
+            data.date = new Date(data.date.setTime(data.date.getTime() + (4*60*60*1000)));
             res.json(data);
 
         }
