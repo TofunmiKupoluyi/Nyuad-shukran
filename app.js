@@ -33,11 +33,13 @@ mainRouter.post("/updateTaxi", function(req, res){
         }
         if(err){
             data.res = err;
+            console.log(data);
             res.sendfile("./static/badInput.html");
         }
         else{
             data.err = 0;
             data.res = "Successful";
+            console.log(data);
             res.sendfile("./static/successful.html");
         }
 
