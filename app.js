@@ -103,12 +103,13 @@ mainRouter.post("/postMessage", function(req, res){
 });
 
 mainRouter.get("/getMessages", function(req, res){
-    connection.query("SELECT recipient, message FROM shokran ORDER BY id DESC LIMIT 1", function(err, res1){
+    connection.query("SELECT id, recipient, message FROM shokran WHERE isPrinted = false ORDER BY id DESC LIMIT 1", function(err, res1){
         var data = {
             err: 1,
             res: "",
             message: "",
-            recipient: ""
+            recipient: "",
+            valuesToPrint: false
         }
         if(err){
             data.res = err;
@@ -116,9 +117,15 @@ mainRouter.get("/getMessages", function(req, res){
         }
         else{
             data.err = 0;
-            data.recipient = res1[0].recipient;
-            data.res = "Successful";
-            data.message = res1[0].message;
+            if(res1[0]){
+                data.recipient = res1[0].recipient;
+                data.res = "Successful";
+                data.message = res1[0].message;
+                data.valuesToPrint = true;
+                connection.query("UPDATE shokran  SET isPrinted = true WHERE id = ? ", [res1[0].id]);
+            }
+            
+            
             res.json(data);
         }
 
