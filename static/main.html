@@ -1,5 +1,60 @@
-<form action="/updateTaxi" method="post">
-    Number of Taxis:<br>
-    <input type="text" name="numberOfTaxis"><br>
-    <input type="submit">
-  </form>
+<html lang = "en">
+  <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+  <nav class="navbar navbar-default" style="border-radius:0">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Taxi - NYU</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Record</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class = "container" style="padding-top:50px">
+      <div class="col-sm-2 col-xs-1"></div>
+      <div class="col-sm-8 col-xs-10">
+        <div class = "panel panel-default">
+          <div class= "panel-heading">
+            <center><b> Taxi Recording System </b></center>
+          </div>
+          <div class = "panel-body">
+            <center>
+              <form action="/updateTaxi" method="post">
+                  
+                  <div class="form-group">
+                      <label class="control-label col-sm-2" for="numTaxis">Number of Taxis:</label>
+                      <div class="col-sm-8">          
+                        <input type="number" class="form-control" id="numTaxis" placeholder="Enter number of taxis ..." name="numberOfTaxis">
+                      </div>
+                      <div class="col-sm-2">
+                        <input type="submit" class = "btn btn-primary">
+                      </div>
+
+                  </div>
+                  
+                  
+              </form>
+            </center>
+          </div>
+          <div class="panel-footer">
+              <center><small>Created by Tofunmi, Otelo and Muhammad</small></center>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+
+</html>
