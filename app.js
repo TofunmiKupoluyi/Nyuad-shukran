@@ -78,6 +78,53 @@ mainRouter.get("/numberOfTaxis", function(req, res){
     });
 });
 
+mainRouter.post("/postMessage", function(req, res){
+    var recipient = req.body.recipient;
+    var message = req.body.message;
+    connection.query("INSERT INTO shokran SET recipient = ?, message= ?", [recipient, message], function(err, res1){
+        var data = {
+            err: 1,
+            res: ""
+        }
+        if(err){
+            data.res = err;
+            console.log(data);
+            res.sendfile("./static/badInput.html");
+        }
+        else{
+            data.err = 0;
+            data.res = "Successful";
+            console.log(data);
+            res.sendfile("./static/successful.html");
+        }
+
+    });
+
+});
+
+mainRouter.get("/getMessages", function(req, res){
+    connection.query("SELECT recipient, message FROM shokran ORDER BY id DESC LIMIT 1", function(err, res1){
+        var data = {
+            err: 1,
+            res: "",
+            message: "",
+            recipient: ""
+        }
+        if(err){
+            data.res = err;
+            res.json(data);
+        }
+        else{
+            data.err = 0;
+            data.recipient = res1[0].recipient;
+            data.res = "Successful";
+            data.message = res1[0].message;
+            res.json(data);
+        }
+
+    });
+});
+
 
 
 app.listen( process.env.PORT|| 3001);

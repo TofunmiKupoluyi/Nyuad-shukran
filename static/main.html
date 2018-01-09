@@ -7,10 +7,10 @@
   <nav class="navbar navbar-default" style="border-radius:0">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Taxi - NYU</a>
+          <a class="navbar-brand" href="#">#NYUAD Shokran</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Record</a></li>
+          <li class="active"><a href="#">Post A Message</a></li>
         </ul>
       </div>
     </nav>
@@ -19,20 +19,34 @@
       <div class="col-sm-8 col-xs-10">
         <div class = "panel panel-default">
           <div class= "panel-heading">
-            <center><b> Taxi Recording System </b></center>
+            <center><b> Post a message </b></center>
           </div>
           <div class = "panel-body">
             <center>
-              <form action="/updateTaxi" method="post">
+              <form action="/postMessage" method="post">
                   
                   <div class="form-group">
-                      <label class="control-label col-sm-2" for="numTaxis">Number of Taxis:</label>
-                      <div class="col-sm-8">          
-                        <input type="number" class="form-control" id="numTaxis" placeholder="Enter number of taxis ..." name="numberOfTaxis">
+                      <label class="control-label col-sm-2" for="recipient">To:</label>
+                      <div class="col-sm-10">          
+                        <select class = "form-control" id="recipient" name = "recipient">
+                          <option value = "John Doe">John Doe</option>
+                          <option value = "Jane Doe">Jane Doe</option>
+                        </select>
+                        
                       </div>
-                      <div class="col-sm-2">
-                        <input type="submit" class = "btn btn-primary">
+                      <br><br><br>
+                      <label class="control-label col-sm-2"></label>
+                      <div class="col-sm-10">          
+                        <textarea class="form-control" placeholder="Write your message ..." name="message"></textarea>
+                        
                       </div>
+                      <br><br><br><br>
+                      <label class="control-label col-sm-2"></label>
+                      <div class="col-sm-10">          
+                        <input type="submit" class="form-control btn btn-default">
+                        
+                      </div>
+                      
 
                   </div>
                   
